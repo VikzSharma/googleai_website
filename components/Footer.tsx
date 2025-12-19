@@ -11,11 +11,11 @@ const Footer: React.FC = () => {
           <div className="col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6 group">
               <img 
-                src="https://www.agilehunt.com/logo.svg" 
+                src="/logo.svg" 
                 alt="AgileHunt" 
-                className="h-7 w-auto logo-blue"
+                className="h-13 w-auto logo-dark group-hover:opacity-80 transition-opacity duration-300"
               />
-              <span className="text-xl font-black tracking-tighter text-brand-600 uppercase">Agilehunt</span>
+              <span className="text-xl font-black tracking-tighter text-brand-600 ">Agilehunt</span>
             </Link>
             <p className="text-slate-500 dark:text-slate-400 max-w-sm mb-8 leading-relaxed font-medium">
               The modern standard for penetration testing management and vulnerability reporting. 
@@ -32,13 +32,19 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-slate-900 dark:text-white font-bold mb-6 text-sm uppercase tracking-widest">Product</h4>
             <ul className="space-y-4">
-              {['Platform Overview', 'Pricing', 'Security', 'Integrations', 'Changelog'].map((item) => (
-                <li key={item}>
+              {[
+                { name: 'Platform', href: '/platform' },
+                { name: 'Pricing', href: '/pricing' },
+                { name: 'Security', href: '/security' },
+                { name: 'Integrations', href: '/integrations' },
+                { name: 'Changelog', href: '/changelog' }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link 
-                    to={`/${item.toLowerCase().replace(' ', '-')}`} 
+                    to={item.href} 
                     className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 text-sm font-medium transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -48,13 +54,19 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-slate-900 dark:text-white font-bold mb-6 text-sm uppercase tracking-widest">Company</h4>
             <ul className="space-y-4">
-              {['About Us', 'Careers', 'Blog', 'Press Kit', 'Contact'].map((item) => (
-                <li key={item}>
+              {[
+                { name: 'About Us', href: '/about' },
+                { name: 'Careers', href: '/careers' },
+                { name: 'Blog', href: '/blog' },
+                { name: 'Press Kit', href: '/press' },
+                { name: 'Contact', href: '/contact' }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link 
-                    to={`/${item.toLowerCase().replace(' ', '-')}`} 
+                    to={item.href} 
                     className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 text-sm font-medium transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -64,13 +76,19 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-slate-900 dark:text-white font-bold mb-6 text-sm uppercase tracking-widest">Resources</h4>
             <ul className="space-y-4">
-              {['Documentation', 'API Reference', 'Case Studies', 'Webinars', 'Security Policy'].map((item) => (
-                <li key={item}>
+              {[
+                { name: 'Documentation', href: '/docs' },
+                { name: 'API Reference', href: '/api' },
+                { name: 'Case Studies', href: '/case-studies' },
+                { name: 'Webinars', href: '/webinars' },
+                { name: 'Security Policy', href: '/security-policy' }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link 
-                    to={`/${item.toLowerCase().replace(' ', '-')}`} 
+                    to={item.href} 
                     className="text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 text-sm font-medium transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

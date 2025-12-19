@@ -1,10 +1,16 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Quote, ArrowUpRight } from 'lucide-react';
 
 const CustomersPage: React.FC = () => {
   return (
-    <div className="pt-24 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <>
+      <Helmet>
+        <title>Customer Success Stories | AgileHunt - Enterprise Penetration Testing</title>
+        <meta name="description" content="See how Fortune 500 companies and startups use AgileHunt for transparent, effective penetration testing. Real customer success stories and results." />
+        <meta name="keywords" content="customer testimonials, security case studies, penetration testing results, enterprise security, customer success stories" />
+      </Helmet>
       <section className="py-24 max-w-7xl mx-auto px-4 text-center">
         <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 leading-tight tracking-tighter">Customer Success</h1>
         <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
@@ -70,7 +76,7 @@ const CustomersPage: React.FC = () => {
           ))}
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

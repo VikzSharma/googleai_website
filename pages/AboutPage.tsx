@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Target, Shield, Users, Trophy, Linkedin, Twitter } from 'lucide-react';
 import ContactModal from '../components/ContactModal';
 
@@ -7,7 +8,11 @@ const AboutPage: React.FC = () => {
 
   return (
     <>
-      <div className="pt-24 bg-white dark:bg-slate-950 transition-colors duration-300">
+      <Helmet>
+        <title>About AgileHunt | Founder-Led Penetration Testing Experts</title>
+        <meta name="description" content="Learn about AgileHunt's founders - former CISOs and ethical hackers dedicated to transparent, effective penetration testing. Security-first, founder-led approach." />
+        <meta name="keywords" content="penetration testing company, ethical hackers, CISO team, offensive security experts, security professionals, about AgileHunt" />
+      </Helmet>      <div className="pt-24 bg-white dark:bg-slate-950 transition-colors duration-300">
       {/* Hero */}
       <section className="py-24 max-w-7xl mx-auto px-4 text-center">
         <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-tight">
@@ -24,8 +29,8 @@ const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { label: 'Founded', val: '2020' },
-            { label: 'Security Pros', val: '50+' },
-            { label: 'Vulnerabilities', val: '12k+' },
+            { label: 'Security Pros', val: '5+' },
+            { label: 'Vulnerabilities', val: '500+' },
             { label: 'Satisfaction', val: '99%' },
           ].map((s, i) => (
             <div key={i} className="text-center">
@@ -49,15 +54,15 @@ const AboutPage: React.FC = () => {
           {[
             {
               name: 'Vikas Anil Sharma',
-              role: 'CEO & Co-Founder',
-              bio: 'Former CISO at GlobalTech. Alex has spent 15 years building security programs that actually work for the business, not against it.',
+              role: 'Chief Offensive Security Officer',
+              bio: 'On a mission to make penetration testing practical, outcome-driven, and business-aligned. Helping modern SaaS companies stay secure as they scale.',
               image: 'https://pbs.twimg.com/profile_images/2000819312077201408/JBBsqvOt_400x400.jpg',
             },
             {
-              name: 'Sarah Chen',
-              role: 'CTO & Co-Founder',
-              bio: 'A world-renowned ethical hacker and speaker. Sarah previously led offensive security at CloudSystems and holds multiple 0-day disclosures.',
-              image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=800&auto=format&fit=crop',
+              name: 'Sushil Ram',
+              role: 'Technical Author',
+              bio: 'Sushil Ram is a technical author and security researcher with a passion for writing about security topics.',
+              image: '/sushil.jpeg',
             }
           ].map((member, i) => (
             <div key={i} className="group p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 transition-all hover:shadow-2xl">
@@ -83,7 +88,7 @@ const AboutPage: React.FC = () => {
           <div className="max-w-sm mx-auto p-1 bg-white/10 rounded-[2.5rem] backdrop-blur-md">
             <div className="p-8 rounded-[2.5rem] bg-slate-800 border border-white/5">
               <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-brand-500 shadow-xl shadow-brand-600/20">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop" alt="Advisor" className="w-full h-full object-cover" />
+                <img src="/thomas.jpg" alt="Advisor" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-2xl font-black text-white mb-1">Thomas Sabono</h3>
               <p className="text-brand-400 font-bold mb-4 uppercase tracking-widest text-xs">Advisor – Low-Level & Exploit Research</p>
@@ -132,8 +137,8 @@ const AboutPage: React.FC = () => {
             </div>
             <div className="absolute -bottom-10 -left-10 p-8 rounded-[2.5rem] bg-brand-600 text-white max-w-[280px] shadow-2xl">
               <Trophy className="w-12 h-12 mb-4" />
-              <div className="text-2xl font-black mb-1 tracking-tighter">Top Tier 2024</div>
-              <div className="text-sm font-medium opacity-90 text-white">Voted #1 Pentest Platform for SOC 2 Compliance</div>
+              <div className="text-2xl font-black mb-1 tracking-tighter">Top Tier 2025</div>
+              <div className="text-sm font-medium opacity-90 text-white">Voted #1 Pentest Platform for PCI-DSS Compliance</div>
             </div>
           </div>
         </div>

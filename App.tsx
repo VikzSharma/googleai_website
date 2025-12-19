@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -10,6 +11,7 @@ import PlatformPage from './pages/PlatformPage';
 import CustomersPage from './pages/CustomersPage';
 import BlogPage from './pages/BlogPage';
 import StaticContentPage from './pages/StaticContentPage';
+import AttackHandbookPage from './pages/AttackHandbookPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -21,12 +23,13 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
-        <Navbar />
-        <main className="flex-grow">
-          <Routes>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
+          <Navbar />
+          <main className="flex-grow">
+            <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/platform" element={<PlatformPage />} />
             <Route path="/pricing" element={<PricingPage />} />
@@ -34,6 +37,9 @@ const App: React.FC = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/about-us" element={<AboutPage />} />
+            
+            {/* Attack Handbook */}
+            <Route path="/attack-handbook" element={<AttackHandbookPage />} />
             
             {/* Resources & Legal */}
             <Route path="/security" element={<StaticContentPage title="Enterprise Security" />} />
@@ -55,6 +61,7 @@ const App: React.FC = () => {
         <Footer />
       </div>
     </Router>
+    </HelmetProvider>
   );
 };
 

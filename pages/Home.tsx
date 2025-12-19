@@ -14,8 +14,10 @@ import {
   Shield,
   Users,
   DollarSign,
-  Zap as ZapIcon
+  Zap as ZapIcon,
+  X
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import ROICalculator from '../components/ROICalculator';
 import LogoCloud from '../components/LogoCloud';
 import FAQ from '../components/FAQ';
@@ -24,9 +26,88 @@ import ContactModal from '../components/ContactModal';
 const Home: React.FC = () => {
   const [activeChallenge, setActiveChallenge] = useState<'compliance' | 'vendor' | 'pricing' | 'reports'>('compliance');
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
   return (
     <>
+    <Helmet>
+      <title>AgileHunt | PTaaS Platform for Modern Security Teams</title>
+      <meta name="description" content="Transparent hour-based penetration testing with real-time reporting and compliance-ready reports. Trusted by Fortune 500 companies. Start your free trial today." />
+      <meta name="keywords" content="penetration testing, ethical hacking, security assessment, offensive security, vulnerability testing, pentesting platform, RBAC, compliance reporting" />
+      <link rel="canonical" href="https://agilehunt.com/" />
+      
+      {/* Schema.org Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "AgileHunt",
+          "description": "PTaaS Platform for Modern Security Teams",
+          "url": "https://agilehunt.com",
+          "applicationCategory": "SecurityApplication",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "100",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "url": "https://agilehunt.com/pricing"
+          }
+        })}
+      </script>
+      
+      {/* Organization Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "AgileHunt",
+          "url": "https://agilehunt.com",
+          "logo": "https://agilehunt.com/logo.svg",
+          "description": "PTaaS Platform for Modern Security Teams",
+          "foundingDate": "2020",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "email": "hello@agilehunt.com"
+          },
+          "sameAs": [
+            "https://linkedin.com/company/agilehunt",
+            "https://twitter.com/agilehunt"
+          ]
+        })}
+      </script>
+    </Helmet>
     <div className="bg-white dark:bg-slate-950 transition-colors duration-300">
+      {/* Announcement Banner */}
+      {showAnnouncement && (
+        <div className="bg-gradient-to-r from-brand-600 to-brand-700 text-white py-4 px-4 sticky top-24 z-30">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 flex-1">
+              <Sparkles className="w-5 h-5 flex-shrink-0 animate-pulse" />
+              <div>
+                <p className="font-black text-sm">New: Attack Handbook Released</p>
+                <p className="text-xs opacity-90">How real attackers break SaaS apps — from 100+ pentests</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <a href="/attack-handbook" className="px-4 py-2 bg-white text-brand-600 font-bold rounded-lg hover:bg-slate-100 transition-all text-sm">
+                Get Handbook
+              </a>
+              <button 
+                onClick={() => setShowAnnouncement(false)}
+                className="p-1 hover:bg-white/20 rounded transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Hero Section with Animated Background */}
       <section className="relative pt-32 lg:pt-48 pb-32 overflow-hidden">
         {/* Background Elements */}
@@ -51,7 +132,7 @@ const Home: React.FC = () => {
 
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-sm mb-8 font-medium backdrop-blur-sm">
             <Zap className="size-3 text-brand-600 animate-pulse" />
-            Founder-Led Security Solutions
+            Guarding your innovation!
           </div>
           
           <h1 className="text-6xl md:text-9xl font-black tracking-tight text-slate-900 dark:text-white mb-8 leading-[0.9] md:leading-[0.95]">

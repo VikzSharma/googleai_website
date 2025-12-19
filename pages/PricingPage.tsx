@@ -1,10 +1,17 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Check, Shield } from 'lucide-react';
 
 const PricingPage: React.FC = () => {
   return (
-    <div className="pt-40 pb-32 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <>
+      <Helmet>
+        <title>Penetration Testing Pricing | AgileHunt - Transparent Hour-Based Rates</title>
+        <meta name="description" content="Transparent, hour-based pentesting pricing with no hidden fees. Buy testing hours in bulk and deploy across projects instantly. Flexible plans for startups to enterprises." />
+        <meta name="keywords" content="penetration testing pricing, security testing cost, PTaaS pricing, offensive security rates, vulnerability assessment pricing" />
+      </Helmet>
+      <div className="pt-40 pb-32 bg-white dark:bg-slate-950 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 text-center mb-24">
         <h1 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 leading-tight tracking-tighter">Transparent, <br/>Hour-Based Pricing.</h1>
         <p className="text-xl text-slate-500 dark:text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed">
@@ -80,7 +87,8 @@ const PricingPage: React.FC = () => {
           AgileHunt won't charge you a single dollar. We're that confident in our results.
         </p>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

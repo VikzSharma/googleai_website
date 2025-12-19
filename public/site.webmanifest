@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <name>AgileHunt - Security Testing Platform</name>
+  <short_name>AgileHunt</short_name>
+  <description>Founder-led security testing platform for offensive security assessments</description>
+  <start_url>/</start_url>
+  <display>standalone</display>
+  <background_color>#ffffff</background_color>
+  <theme_color>#2563eb</theme_color>
+  <icons>
+    [
+      {
+        "src": "/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      },
+      {
+        "src": "/favicon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/favicon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  </icons>
+  <screenshots>
+    [
+      {
+        "src": "/screenshot-540x720.png",
+        "sizes": "540x720",
+        "form_factor": "narrow"
+      },
+      {
+        "src": "/screenshot-1280x720.png",
+        "sizes": "1280x720",
+        "form_factor": "wide"
+      }
+    ]
+  </screenshots>
+</manifest>

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Search, ChevronRight } from 'lucide-react';
 
 const BlogPage: React.FC = () => {
@@ -31,7 +32,13 @@ const BlogPage: React.FC = () => {
   ];
 
   return (
-    <div className="pt-24 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <>
+      <Helmet>
+        <title>Security Blog | AgileHunt - Penetration Testing Insights & Guides</title>
+        <meta name="description" content="Expert articles on penetration testing, offensive security strategies, compliance, and vulnerability management. Learn from AgileHunt's security professionals." />
+        <meta name="keywords" content="security blog, penetration testing guide, offensive security insights, vulnerability management, compliance guides, security strategy" />
+      </Helmet>
+      <div className="pt-24 bg-white dark:bg-slate-950 transition-colors duration-300">
       <section className="py-24 max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl text-center md:text-left">
@@ -86,7 +93,8 @@ const BlogPage: React.FC = () => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-brand-600/5 blur-3xl rounded-full"></div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

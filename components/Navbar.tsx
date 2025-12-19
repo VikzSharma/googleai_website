@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
       <div className="flex items-center justify-between px-6 py-2.5">
         <Link to="/" className="flex shrink-0 items-center gap-2 group">
           <img 
-            src="https://www.agilehunt.com/logo.svg" 
+            src="/logo.svg" 
             alt="AgileHunt Logo" 
             className="h-12 w-auto logo-dark-blue transition-transform group-hover:scale-105"
           />

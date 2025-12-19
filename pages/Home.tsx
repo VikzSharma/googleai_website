@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Play, 
   ShieldCheck, 
@@ -11,14 +11,21 @@ import {
   Zap,
   Crosshair,
   Activity,
-  Shield
+  Shield,
+  Users,
+  DollarSign,
+  Zap as ZapIcon
 } from 'lucide-react';
 import ROICalculator from '../components/ROICalculator';
 import LogoCloud from '../components/LogoCloud';
 import FAQ from '../components/FAQ';
+import ContactModal from '../components/ContactModal';
 
 const Home: React.FC = () => {
+  const [activeChallenge, setActiveChallenge] = useState<'compliance' | 'vendor' | 'pricing' | 'reports'>('compliance');
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   return (
+    <>
     <div className="bg-white dark:bg-slate-950 transition-colors duration-300">
       {/* Hero Section with Animated Background */}
       <section className="relative pt-32 lg:pt-48 pb-32 overflow-hidden">
@@ -85,6 +92,158 @@ const Home: React.FC = () => {
       </section>
 
       <LogoCloud />
+
+      {/* Struggling With Fragmented Workflows Section */}
+      <section className="py-32 px-4 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900/50 dark:to-slate-950 border-y border-slate-200 dark:border-slate-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-6 tracking-tighter">Struggling With <br/><span className="text-brand-600">Fragmented Workflows?</span></h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400 font-medium max-w-3xl mx-auto">
+              Security teams waste countless hours juggling multiple tools, vendors, and manual processes. There's a better way.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 mb-24">
+            {/* Left Column - Challenge Buttons */}
+            <div className="space-y-4 flex flex-col">
+              {[
+                { id: 'compliance', icon: FileCheck, label: 'Compliance Deadlines', color: 'from-purple-500 to-purple-600' },
+                { id: 'vendor', icon: Users, label: 'Vendor Coordination', color: 'from-blue-500 to-blue-600' },
+                { id: 'pricing', icon: DollarSign, label: 'Unclear Pricing', color: 'from-green-500 to-green-600' },
+                { id: 'reports', icon: ZapIcon, label: 'Delayed Reports', color: 'from-orange-500 to-orange-600' }
+              ].map((challenge) => (
+                <button
+                  key={challenge.id}
+                  onClick={() => setActiveChallenge(challenge.id as 'compliance' | 'vendor' | 'pricing' | 'reports')}
+                  className={`w-full p-6 rounded-2xl font-bold text-lg transition-all text-left flex items-center gap-4 ${
+                    activeChallenge === challenge.id
+                      ? `bg-gradient-to-r ${challenge.color} text-white shadow-xl scale-105`
+                      : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 hover:border-brand-600 dark:hover:border-brand-600 hover:shadow-lg'
+                  }`}
+                >
+                  <challenge.icon className="w-6 h-6 flex-shrink-0" />
+                  <span>{challenge.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Right Column - Challenge Details */}
+            <div className="space-y-8">
+              {activeChallenge === 'compliance' && (
+                <>
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg animate-in fade-in duration-300">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The Problem</h3>
+                    <p className="text-slate-600 dark:text-slate-400 italic font-medium leading-relaxed mb-6 text-lg">
+                      "Scrambling to meet PCI DSS, ISO 27001, and SOC 2 requirements with fragmented testing reports from multiple vendors."
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Our Solution</h3>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                      Automated compliance-ready reports generated in real-time, mapped to specific frameworks with audit trail documentation.
+                    </p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-950/20 rounded-[2.5rem] p-10 border border-purple-200 dark:border-purple-900/30 shadow-lg">
+                    <div className="flex items-start gap-4">
+                      <Sparkles className="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="text-3xl font-black text-purple-600 tracking-tight">5x Faster Compliance</div>
+                        <div className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest">Impact Result</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {activeChallenge === 'vendor' && (
+                <>
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg animate-in fade-in duration-300">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The Problem</h3>
+                    <p className="text-slate-600 dark:text-slate-400 italic font-medium leading-relaxed mb-6 text-lg">
+                      "Wasting countless hours juggling multiple tools, vendors, emails, and manual scheduling processes."
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Our Solution</h3>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                      One unified platform for communication, scheduling, and reporting. Real-time collaboration between your team and testers.
+                    </p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-950/20 rounded-[2.5rem] p-10 border border-blue-200 dark:border-blue-900/30 shadow-lg">
+                    <div className="flex items-start gap-4">
+                      <Sparkles className="w-8 h-8 text-blue-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="text-3xl font-black text-blue-600 tracking-tight">73% Time Saved</div>
+                        <div className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest">Impact Result</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {activeChallenge === 'pricing' && (
+                <>
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg animate-in fade-in duration-300">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The Problem</h3>
+                    <p className="text-slate-600 dark:text-slate-400 italic font-medium leading-relaxed mb-6 text-lg">
+                      "Unpredictable costs with hidden fees, scope creep charges, and paying for idle time."
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Our Solution</h3>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                      Transparent hour-based pricing. Pay only for the testing hours you use with complete budget predictability.
+                    </p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-950/20 rounded-[2.5rem] p-10 border border-green-200 dark:border-green-900/30 shadow-lg">
+                    <div className="flex items-start gap-4">
+                      <Sparkles className="w-8 h-8 text-green-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="text-3xl font-black text-green-600 tracking-tight">$250K Avg Savings</div>
+                        <div className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest">Impact Result</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {activeChallenge === 'reports' && (
+                <>
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg animate-in fade-in duration-300">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">The Problem</h3>
+                    <p className="text-slate-600 dark:text-slate-400 italic font-medium leading-relaxed mb-6 text-lg">
+                      "Waiting weeks for final reports after testing is complete, delaying remediation and release cycles."
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] p-10 border border-slate-200 dark:border-slate-800 shadow-lg">
+                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-6 tracking-tight">Our Solution</h3>
+                    <p className="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                      Live reporting as vulnerabilities are found. Instant report generation the moment testing is complete.
+                    </p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-950/20 rounded-[2.5rem] p-10 border border-orange-200 dark:border-orange-900/30 shadow-lg">
+                    <div className="flex items-start gap-4">
+                      <Sparkles className="w-8 h-8 text-orange-600 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="text-3xl font-black text-orange-600 tracking-tight">Real-time Reporting</div>
+                        <div className="text-sm font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest">Impact Result</div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Dashboard Preview Section */}
       <section className="bg-slate-50 dark:bg-slate-900/50 py-32 border-y border-slate-200 dark:border-slate-900">
@@ -211,17 +370,23 @@ const Home: React.FC = () => {
             AgileHunt's transparent, hour-based model is the new standard. <span className="text-white font-black underline decoration-brand-600">Zero contracts. Zero surprises.</span>
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            <button className="group relative bg-brand-600 text-white px-20 py-10 rounded-[2.5rem] font-black text-3xl hover:bg-brand-700 transition-all shadow-[0_20px_60px_rgba(37,99,235,0.6)] hover:-translate-y-3 active:scale-95 overflow-hidden">
+            <button 
+              onClick={() => setIsContactModalOpen(true)}
+              className="group relative bg-brand-600 text-white px-20 py-10 rounded-[2.5rem] font-black text-3xl hover:bg-brand-700 transition-all shadow-[0_20px_60px_rgba(37,99,235,0.6)] hover:-translate-y-3 active:scale-95 overflow-hidden">
               <span className="relative z-10">Launch Engagement</span>
               <div className="absolute bottom-0 left-0 h-2 bg-white/40 w-0 group-hover:w-full transition-all duration-700"></div>
             </button>
-            <button className="bg-white/5 backdrop-blur-3xl text-white px-16 py-10 rounded-[2.5rem] font-black text-2xl hover:bg-white/10 border border-white/20 transition-all hover:-translate-y-3 active:scale-95">
+            <button 
+              onClick={() => setIsContactModalOpen(true)}
+              className="bg-white/5 backdrop-blur-3xl text-white px-16 py-10 rounded-[2.5rem] font-black text-2xl hover:bg-white/10 border border-white/20 transition-all hover:-translate-y-3 active:scale-95">
               Talk to Founder
             </button>
           </div>
         </div>
         </section>
-    </div>
+      </div>
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+    </>
   );
 };
 

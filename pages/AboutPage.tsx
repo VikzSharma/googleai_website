@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Target, Shield, Users, Trophy, Linkedin, Twitter } from 'lucide-react';
+import ContactModal from '../components/ContactModal';
 
 const AboutPage: React.FC = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
   return (
-    <div className="pt-24 bg-white dark:bg-slate-950 transition-colors duration-300">
+    <>
+      <div className="pt-24 bg-white dark:bg-slate-950 transition-colors duration-300">
       {/* Hero */}
       <section className="py-24 max-w-7xl mx-auto px-4 text-center">
         <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter leading-tight">
@@ -81,10 +85,10 @@ const AboutPage: React.FC = () => {
               <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-4 border-brand-500 shadow-xl shadow-brand-600/20">
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop" alt="Advisor" className="w-full h-full object-cover" />
               </div>
-              <h3 className="text-2xl font-black text-white mb-1">Dr. Robert Vance</h3>
-              <p className="text-brand-400 font-bold mb-4 uppercase tracking-widest text-xs">Principal Advisor</p>
+              <h3 className="text-2xl font-black text-white mb-1">Thomas Sabono</h3>
+              <p className="text-brand-400 font-bold mb-4 uppercase tracking-widest text-xs">Advisor – Low-Level & Exploit Research</p>
               <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                Former NSA Lead Architect and Emeritus Professor of Cybersecurity. Robert guides our offensive methodologies and high-stakes strategy.
+                Former Offensive System Security researcher in Government Sector with 15+ years in offensive security, specializing in novel exploitation vectors and reverse engineering. A low-level enthusiast guiding Agilehunt’s binary research strategies for real breakthrough innovation.
               </p>
             </div>
           </div>
@@ -134,7 +138,27 @@ const AboutPage: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+
+      {/* Contact Section */}
+      <section className="py-32 px-4 bg-slate-900 dark:bg-slate-900 rounded-[3rem] mx-4 my-10 relative overflow-hidden text-center text-white">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight">Ready to Strengthen Your Security?</h2>
+          <p className="text-slate-400 font-medium mb-10 max-w-lg mx-auto text-lg leading-relaxed">
+            Let's talk about how AgileHunt can transform your offensive security program.
+          </p>
+          <button 
+            onClick={() => setIsContactModalOpen(true)}
+            className="inline-flex items-center gap-2 bg-brand-600 px-8 py-4 rounded-2xl font-bold hover:bg-brand-700 transition-all shadow-xl shadow-brand-600/20">
+            Get in Touch
+          </button>
+        </div>
+        {/* Background blobs for flair */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-brand-600/20 blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-600/20 blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+      </section>
+      </div>
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
+    </>
   );
 };
 

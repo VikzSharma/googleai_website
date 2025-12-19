@@ -1,12 +1,14 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Shield, ArrowRight, Zap, Target } from 'lucide-react';
+import ContactModal from '../components/ContactModal';
 
 interface StaticContentPageProps {
   title: string;
 }
 
 const StaticContentPage: React.FC<StaticContentPageProps> = ({ title }) => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   return (
     <div className="pt-40 pb-32 bg-white dark:bg-slate-950 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4">
@@ -62,12 +64,15 @@ const StaticContentPage: React.FC<StaticContentPageProps> = ({ title }) => {
             <p className="text-slate-400 font-medium mb-10 max-w-lg mx-auto">
               Our support and technical success teams are standing by to walk you through any operational details.
             </p>
-            <button className="inline-flex items-center gap-2 bg-brand-600 px-8 py-4 rounded-2xl font-bold hover:bg-brand-700 transition-all shadow-xl shadow-brand-600/20">
+            <button 
+              onClick={() => setIsContactModalOpen(true)}
+              className="inline-flex items-center gap-2 bg-brand-600 px-8 py-4 rounded-2xl font-bold hover:bg-brand-700 transition-all shadow-xl shadow-brand-600/20">
               Talk to a Security Expert <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
       </div>
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </div>
   );
 };

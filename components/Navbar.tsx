@@ -67,9 +67,9 @@ export const Navbar: React.FC = () => {
           <img 
             src="https://www.agilehunt.com/logo.svg" 
             alt="AgileHunt Logo" 
-            className="h-8 w-auto logo-blue transition-transform group-hover:scale-105"
+            className="h-12 w-auto logo-dark-blue transition-transform group-hover:scale-105"
           />
-          <span className="text-xl font-black tracking-tighter text-brand-600 hidden sm:block">AgileHunt</span>
+          <span className="text-xl font-black tracking-tighter text-brand-600 hidden sm:block">Agilehunt</span>
           </Link>
 
         {/* Desktop Navigation */}

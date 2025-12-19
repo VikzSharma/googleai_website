@@ -1,0 +1,9 @@
+
+{
+  "name": "AgileHunt - Modern Pentesting Platform",
+  "description": "The All-in-One Platform for Modern Pentesting. Manage scope, track real-time hours, and generate compliance-ready reports in minutes.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
